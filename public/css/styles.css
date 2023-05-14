@@ -1,0 +1,17 @@
+body {
+	background-color: linen;
+	border: 1px solid black;
+}
+h1 {
+	color: maroon;
+}
+nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 20px;
+	border: 2px solid maroon;
+}
+a {
+	font-size: 20px;
+}
