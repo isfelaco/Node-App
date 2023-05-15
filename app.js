@@ -3,18 +3,16 @@ const app = express();
 var path = require("path");
 const router = express.Router();
 
-router.get("/", function (req, res) {
-	res.sendFile(path.join(__dirname + "/views/index.html"));
-	//__dirname : It will resolve to your project folder.
-});
+const siteMap = {
+	"/": "/views/index.html",
+	"/about": "/views/about.html",
+};
 
-router.get("/about", function (req, res) {
-	res.sendFile(path.join(__dirname + "/views/about.html"));
-});
-
-router.get("/sitemap", function (req, res) {
-	res.sendFile(path.join(__dirname + "/views/sitemap.html"));
-});
+for (const [key, value] of Object.entries(siteMap)) {
+	router.get(key, function (req, res) {
+		res.sendFile(path.join(__dirname + value));
+	});
+}
 
 app.use(express.static(path.join(__dirname, "/public")));
 app.use("/", router);
